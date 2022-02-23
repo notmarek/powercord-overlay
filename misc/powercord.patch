@@ -21,15 +21,19 @@ index 0cd00cdd545..657396c8565 100644
      this._injectSnippets();
      this.loadStylesheet('scss/style.scss');
 diff --git a/src/Powercord/managers/plugins.js b/src/Powercord/managers/plugins.js
-index fbe52c9..16094ab 100644
+index fbe52c9..6b6ea9f 100644
 --- a/src/Powercord/managers/plugins.js
 +++ b/src/Powercord/managers/plugins.js
-@@ -4,7 +4,7 @@ const { rmdirRf } = require('powercord/util');
+@@ -1,10 +1,10 @@
+-const { resolve } = require('path');
++const { resolve, join } = require('path');
+ const { readdirSync } = require('fs');
+ const { rmdirRf } = require('powercord/util');
  
  module.exports = class PluginManager {
    constructor () {
 -    this.pluginDir = resolve(__dirname, '..', 'plugins');
-+    this.pluginDir = resolve(process.env.XDG_CACHE_HOME ?? join(process.env.HOME, '.cache'), 'powercord', 'plugins');
++    this.pluginDir = resolve(process.env.XDG_CONFIG_HOME ?? join(process.env.HOME, '.config'), 'powercord', 'plugins');
      this.plugins = new Map();
  
      this.manifestKeys = [ 'name', 'version', 'description', 'author', 'license' ];
