@@ -20,20 +20,24 @@ index 0cd00cdd545..657396c8565 100644
      this._loadQuickCSS();
      this._injectSnippets();
      this.loadStylesheet('scss/style.scss');
+diff --git a/src/Powercord/managers/plugins.js b/src/Powercord/managers/plugins.js
+index fbe52c9..16094ab 100644
 --- a/src/Powercord/managers/plugins.js
 +++ b/src/Powercord/managers/plugins.js
-@@ -4,7 +4,7 @@
+@@ -4,7 +4,7 @@ const { rmdirRf } = require('powercord/util');
  
  module.exports = class PluginManager {
    constructor () {
 -    this.pluginDir = resolve(__dirname, '..', 'plugins');
-+    this.pluginDir = resolve(process.env.XDG_CONFIG_HOME ?? join(process.env.HOME, '.config'), 'powercord', 'plugins');
++    this.pluginDir = resolve(process.env.XDG_CACHE_HOME ?? join(process.env.HOME, '.cache'), 'powercord', 'plugins');
      this.plugins = new Map();
  
      this.manifestKeys = [ 'name', 'version', 'description', 'author', 'license' ];
---- a/powercord/src/Powercord/managers/styles.js
-+++ b/powercord/src/Powercord/managers/styles.js
-@@ -16,7 +16,7 @@
+diff --git a/src/Powercord/managers/styles.js b/src/Powercord/managers/styles.js
+index 65b97b7..6b15d37 100644
+--- a/src/Powercord/managers/styles.js
++++ b/src/Powercord/managers/styles.js
+@@ -16,7 +16,7 @@ const ErrorTypes = Object.freeze({
  module.exports = class StyleManager {
    constructor () {
      this._coreStyles = [];
